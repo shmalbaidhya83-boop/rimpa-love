@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year Rimpa ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #2b1055, #000);
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.7rem;
+    animation: glow 2s infinite alternate;
+}
+
+p {
+    font-size: 1.2rem;
+    max-width: 720px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1.05rem;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4e8d;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 15px;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+.hidden { display: none; }
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff; }
+    to { text-shadow: 0 0 30px #ff99cc; }
+}
+
+/* stars */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+    0%,100% { opacity: .2; }
+    50% { opacity: 1; }
+}
+
+/* hearts */
+.heart {
+    position: absolute;
+    font-size: 18px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* popup */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: #ff4e8d;
+    padding: 25px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    display: none;
+    z-index: 999;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0b3f1d87d7.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PASSWORD SCREEN -->
+<div class="container" id="lock">
+    <h1>🔐 For Rimpa Only</h1>
+    <p>Enter the secret number 💖</p>
+    <input id="pass" type="password" placeholder="hint: special date ❤️"
+           style="padding:10px;border-radius:20px;border:none;">
+    <br><br>
+    <button onclick="unlock()">Unlock 💕</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container hidden" id="content">
+    <h1>❤️ Happy New Year Rimpa ❤️</h1>
+
+    <p>
+        রিম্পা,<br><br>
+        নতুন বছরের শুরুতেই তোমাকে কিছু বলতে চাই —  
+        তুমি শুধু আমার ভালোবাসা নও, তুমি আমার শান্তি, আমার হাসি, আমার সবচেয়ে সুন্দর অনুভূতি।  
+        তোমার একটা হাসি আমার হাজারটা দুঃখ ভুলিয়ে দিতে পারে।  
+        <br><br>
+        এই নতুন বছরে আমি চাই আমাদের গল্পটা আরও সুন্দর হোক,  
+        ঝগড়ার শেষে থাকুক হাসি,  
+        আর প্রতিটা দিন শেষ হোক “আমরা আছি” এই অনুভূতিতে।  
+        <br><br>
+        💍 আমি কথা দিচ্ছি —  
+        সুখে, দুঃখে, রাগে, অভিমানে —  
+        তোমার পাশেই থাকব, হাতটা শক্ত করে ধরে।  
+        <br><br>
+        শুভ নববর্ষ, আমার মানুষটা 🌙  
+        তুমি থাকলেই আমার সব বছর সুন্দর। 💖
+    </p>
+
+    <div id="countdown"></div>
+
+    <br>
+    <button onclick="showLove()">💖 I Love You</button>
+    <button onclick="share()">📱 Share with Love</button>
+</div>
+
+<div class="popup" id="popup">
+    ❤️ I Love You Rimpa ❤️<br>
+    Always & Forever 💫
+</div>
+
+<div class="footer">
+    Forever yours, <b>Sagar ❤️</b>
+</div>
+
+<script>
+function unlock() {
+    if (document.getElementById("pass").value === "1503") {
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("content").classList.remove("hidden");
+    } else {
+        alert("Wrong password 💔");
+    }
+}
+
+function showLove() {
+    const pop = document.getElementById("popup");
+    pop.style.display = "block";
+    setTimeout(() => pop.style.display = "none", 3000);
+}
+
+// stars
+for (let i = 0; i < 80; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+    document.body.appendChild(star);
+}
+
+// hearts
+setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+}, 400);
+
+// countdown
+const target = new Date("January 1, 2026 00:00:00").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const d = target - now;
+    if (d > 0) {
+        document.getElementById("countdown").innerHTML =
+        `🎆 New Year arrives in ${Math.floor(d/(1000*60*60*24))} days 🎆`;
