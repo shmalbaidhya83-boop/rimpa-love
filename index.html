@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Rimpa ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  background: linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  overflow:hidden;
+}
+
+.page{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+
+.hidden{display:none}
+
+.card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  border-radius:22px;
+  padding:40px 30px;
+  max-width:380px;
+  width:100%;
+  box-shadow:0 0 40px rgba(255,80,120,.25);
+}
+
+h1{
+  font-weight:400;
+  letter-spacing:.5px;
+}
+
+p{
+  margin-top:18px;
+  line-height:1.7;
+  opacity:.9;
+}
+
+input,button{
+  width:100%;
+  padding:14px;
+  margin-top:20px;
+  border-radius:30px;
+  border:none;
+  font-size:16px;
+  text-align:center;
+}
+
+button{
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+}
+
+#error{
+  margin-top:12px;
+  color:#ff6b6b;
+}
+
+/* hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  color:#ff4d6d;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(0);opacity:1}
+  to{transform:translateY(-120vh);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page" id="p1">
+  <div class="card">
+    <h1>🔒 Private Page</h1>
+    <p>This page is only for Rimpa</p>
+    <input type="password" id="pass" placeholder="Enter password">
+    <button onclick="unlock()">Continue</button>
+    <div id="error"></div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page hidden" id="p2">
+  <h1>Happy New Year sona ✨</h1>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page hidden" id="p3">
+  <div class="card">
+    <p>
+      Rimpa,<br><br>
+      ei bochor ta amar jonne special,<br>
+      karon tumi amar pashe chile.<br><br>
+      tumi amar shanti,<br>
+      amar smile er reason,<br>
+      amar sobcheye priyo feeling.<br><br>
+      tumi thaklei sob thik hoy ❤️
+    </p>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page hidden" id="p4">
+  <h1>I love you ❤️</h1>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page hidden" id="p5">
+  <h1>Forever.</h1>
+  <p>— Yours, Sagar ♾️</p>
+</div>
+
+<script>
+let current = 1;
+
+function show(n){
+  document.getElementById("p"+current).classList.add("hidden");
+  document.getElementById("p"+n).classList.remove("hidden");
+  current = n;
+}
+
+function unlock(){
+  if(document.getElementById("pass").value === "1410"){
+    show(2);
+    setTimeout(()=>show(3),3000);
+    setTimeout(()=>show(4),6500);
+    setTimeout(()=>show(5),9000);
+  }else{
+    document.getElementById("error").innerText = "Wrong password";
+  }
+}
+
+/* hearts */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=12+Math.random()*18+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},700);
+</script>
+
+</body>
+</html>
